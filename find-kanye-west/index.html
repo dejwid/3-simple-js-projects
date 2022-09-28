@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
+    <title>Document</title>
+    <style type="text/css">
+        html, body {height: 100%;margin:0;padding:0;}
+        body{
+            background: url("beans.jpg");
+            background-size: cover;
+        }
+        img{
+            width: 35px;
+            position: absolute;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <img src="head.png" alt="" onclick="found()">
+    <script>
+        function found() {
+            const findTime = new Date().getTime() - window.startTime;
+            const findSeconds = findTime / 1000;
+            alert('Found in '+findSeconds+' seconds');
+            newGame();
+        }
+        function newGame() {
+            window.startTime = new Date().getTime();
+            const maxX = document.body.clientWidth - 45;
+            const maxY = document.body.clientHeight - 50;
+            const x = Math.round(Math.random() * maxX);
+            const y = Math.round(Math.random() * maxY);
+            document.querySelector('img').style.top = y + 'px';
+            document.querySelector('img').style.left = x + 'px';
+        }
+        newGame();
+    </script>
+</body>
+</html>
